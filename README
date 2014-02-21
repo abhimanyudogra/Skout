@@ -1,35 +1,34 @@
-Name: Skout
+Skout
 Author: Abhimanyu Dogra
-Function: Data search engine with arithematic and logical processing capabilities. Designed for fishing relevant log file 		entries.
+
+Function: File system search engine with arithematic and logical processing capabilities. Designed for fishing relevant log file entries.
 
 Currently supported OS is LINUX (Future: Might add Windows compatibility.)
 
-
-USAGE: The script has two interfaces, shell-based and GUI (made in PyQt)
+USAGE: 
+The script has two interfaces, shell-based and GUI (made in PyQt)
 
 GUI USAGE: Run "genloggui.py" for deploying the scipt in GUI mode.
 
 Shell USAGE: Run "genlog.py" for deplying the script in LINUX shell.
 	    use  "$python genlog.py --help" for information on usage. 
-
 	    
 Guide to the fields used in the script:
-
-Search Field: On using this field, the lines of interest are found by searching for the specified string. Available 				special keywords are <<alphas>>: For matching any word. <<alphanums>>: For matching all word + number				combinations. <<int>>: For matching all pure numbers. <<decimal>>: For matching decimal numbers.
+Search Field: On using this field, the lines of interest are found by searching for the specified string. Available  special keywords are 
+<<alphas>>: For matching any word. 
+<<alphanums>>: For matching all word + number	combinations. 
+<<int>>: For matching all pure numbers. 
+<<decimal>>: For matching decimal numbers.
 
 Regex Field: The lines of interest are found by matching the specified regular expression.
 
 File Path: Specify the log file name/relative path. Default: current directory
 
-Condition Field:Currently supported arithematic operators are: "+" "-" "*" "/" "<" ">=" "<=" "=" which can be combined 				with "!" (left assosiative),"&"(and) and "|"(or) logical operators.
-
-		Time format for the log file as well as the rule string is specified in and can be modified from "patterns.cfg" configuration file.
-
-		Time can be accessed using the "time" keyword and all operators work on time objects except for arithematic "*" "/" "+" "-".
-		Example : (time<=11:49:00.000000).
-
-		Use parenthesis only to override the pre-configured standard operator precedence as it slows down the parsing grammar.
-
+Condition Field:Currently supported arithematic operators are: "+" "-" "*" "/" "<" ">=" "<=" "=" which can be combined with "!" (left assosiative),"&"(and) and "|"(or) logical operators.
+Time format for the log file as well as the rule string is specified in and can be modified from "patterns.cfg" configuration file.
+Time can be accessed using the "time" keyword and all operators work on time objects except for arithematic "*" "/" "+" "-".
+Example : (time<=11:49:00.000000).
+Use parenthesis only to override the pre-configured standard operator precedence as it slows down the parsing grammar.
 
 External dependencies:
 PyParsing - http://pyparsing.wikispaces.com/
