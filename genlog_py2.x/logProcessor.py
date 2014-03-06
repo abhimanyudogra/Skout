@@ -81,7 +81,7 @@ class LogProcessor():
                     
         return keyDict
 
-if __name__=="__main__":
+'''if __name__=="__main__":
    
     log = open("singleLog")     
   
@@ -89,7 +89,7 @@ if __name__=="__main__":
         lp = LogProcessor(line)  
         if lp.lineofInterest(False, False)  :    
             keyInfo = lp.infoExtracter()
-            print keyInfo
+            print keyInfo'''
            
 
     

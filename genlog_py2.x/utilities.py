@@ -57,9 +57,9 @@ class ProgressBar:
         return str(self.prog_bar)
     
     
-if __name__=="__main__":
+'''if __name__=="__main__":
     p = ProgressBar()
     p.update_amount(20)
-    print str(p) + chr(27) + '[A'
+    print str(p) + chr(27) + '[A'  '''
     
     

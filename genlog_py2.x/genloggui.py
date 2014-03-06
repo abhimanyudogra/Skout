@@ -11,8 +11,10 @@ import ruleParser
 import matchEngine
 from GUIDriver import Driver
 import subprocess
-
-from ConfigParser import RawConfigParser
+try:    
+    from ConfigParser import RawConfigParser
+except ImportError:
+    from configparser import
 pattern = RawConfigParser()
 pattern.read(os.path.dirname(os.path.abspath(__file__)) + '/patterns.cfg')
 
@@ -34,7 +36,7 @@ class Terminal(QDialog):
         self.conditionbox= QLineEdit("")
         self.resultbox = QTextBrowser()
         self.statsbox = QTextBrowser()
-        self.submitbutton = QPushButton("Crunch.")
+        self.submitbutton = QPushButton("Go")
         self.configbutton = QPushButton("See/Edit configuration file")
 
         self.progressbar = QProgressBar()

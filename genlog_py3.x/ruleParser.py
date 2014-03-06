@@ -13,7 +13,7 @@ def make_binary_tree(raw_list):
     ''' Takes a list generated as parsing result and converts it into a binary-tree list. That is -the result is a list of lists with each list having not more than 3 members (operand-operator-operand) or (operator-operand)
     '''    
     for element in raw_list:        
-        if type(element) == types.ListType:
+        if type(element) == list:
             make_binary_tree(element)
 
     size = len(raw_list)
@@ -48,9 +48,9 @@ def parse_it(rule):
     return make_binary_tree(expr.searchString(rule)[0][0].asList())
        
 
-if __name__=="__main__":
+'''if __name__=="__main__":
     
     a= parse_it("@today")
-    print a
+    print a'''
 
     

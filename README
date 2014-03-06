@@ -1,9 +1,10 @@
 Skout
 Author: Abhimanyu Dogra
-
 Function: File system search engine with arithematic and logical processing capabilities. Designed for fishing relevant log file entries.
 
+COMPATIBILITY:
 Currently supported OS is LINUX (Future: Might add Windows compatibility.)
+Python 2 and 3 support added.
 
 USAGE: 
 The script has two interfaces, shell-based and GUI (made in PyQt)

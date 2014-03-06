@@ -108,7 +108,7 @@ class Driver():
         if self.error["DivideByZero"]:
             self.mainwindow.statsbox.append("<font color=red>!!ERROR :The script was made to divide by zero in %d instances. Those lines were skipped. !!</font>" % self.error["DivideByZero"])
         if self.error["ValueType"]:
-            self.mainwindow.statsbox.append("<font color=red>!!ERROR :Value Error or Type Error was raised %d times.\nThis usually happens when there is no such variable/ keyword as mentioned in the rulestring or\narithematic operators are applied on unsupported data like a string.\nThose lines were skipped.!!</font>" % self.error["ValueType"])
+            self.mainwindow.statsbox.append("<font color=red>!!ERROR :Value Error or Type Error was raised %d times.\nThis usually happens when there is no such variable/ keyword as mentioned in the rulestring.\nArithematic operators are applied on unsupported data like a string.\nThis can also happen when the datetime/time/date pattern in configuration file does not match the input.\nThose lines were skipped.!!</font>" % self.error["ValueType"])
         if (not self.error["DivideByZero"]) &  (not self.error["ValueType"]) :
             self.mainwindow.statsbox.append("<font color=green>No errors encountered.</font>")
             

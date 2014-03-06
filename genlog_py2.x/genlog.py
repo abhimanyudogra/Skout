@@ -114,7 +114,7 @@ class Driver():
         if self.error["DivideByZero"]:
             print "!!ERROR :The script was made to divide by zero in %d instances. Those lines were skipped. !!" % self.error["DivideByZero"]
         if self.error["ValueType"]:
-            print "!!ERROR :Value Error or Type Error was raised %d times.\nThis usually happens when there is no such variable/ keyword as mentioned in the rulestring or\nArithematic operators are applied on unsupported variables like string.\nThose lines were skipped.!!" % self.error["ValueType"]
+            print "!!ERROR :Value Error or Type Error was raised %d times.\nThis usually happens when there is no such variable/ keyword as mentioned in the rulestring or\nArithematic operators are applied on unsupported variables like string. This can also happen when the datetime/time/date pattern in configuration file does not match the input.\nThose lines were skipped.!!" % self.error["ValueType"]
         if (not self.error["DivideByZero"]) &  (not self.error["ValueType"]) :
             print "No errors encountered."
             

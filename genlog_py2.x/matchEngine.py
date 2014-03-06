@@ -44,23 +44,35 @@ class LogVerifier():
         elif operator == '|':
             return arg1 or arg2
         
-        elif operator == '=':                
+        elif operator == '=':
             if self.isKey(arg1):
                 if self.isKey(arg2):
-                    return self.keyInfo[arg1] == self.keyInfo[arg2]                
-                elif arg1 == "datetime":                            
-                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruletimepattern"))                             
+                    return self.keyInfo[arg1] == self.keyInfo[arg2] 
+                elif arg1 == "datetime":
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatetimepattern"))  
+                    return self.keyInfo[arg1] == arg2                    
+                elif arg1 == "date":
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatepattern")).date()
                     return self.keyInfo[arg1] == arg2
+                elif arg1 == "time":
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruletimepattern")).time()
+                    return self.keyInfo[arg1] == arg2                                                 
                 else:
                     return self.keyInfo[arg1] == arg2                           
-            elif self.isKey(arg2):                
+            elif self.isKey(arg2):
                 if arg2 == "datetime":
-                    arg1 = datetime.datetime.strptime(arg1,pattern.get("usersettings","ruletimepattern"))                             
-                    return self.keyInfo[arg2] == arg1
+                    arg1 = datetime.datetime.strptime(arg1,pattern.get("usersettings","ruledatetimepattern"))
+                    return arg1 == self.keyInfo[arg2]
+                elif arg1 == "date":
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatepattern")).date()
+                    return arg1 == self.keyInfo[arg2]
+                elif arg1 == "time":
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruletimepattern")).time()
+                    return arg1 == self.keyInfo[arg2] 
                 else:
-                    return self.keyInfo[arg2] == arg1                           
-            else:          
-                return arg1==arg2
+                    return arg1 == self.keyInfo[arg2]                           
+            else: 
+                return arg1 == arg2
             
         elif operator == '>':
             if self.isKey(arg1):
@@ -70,10 +82,10 @@ class LogVerifier():
                     arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatetimepattern"))  
                     return self.keyInfo[arg1] > arg2                    
                 elif arg1 == "date":
-                    arg2 = datetime.date.strptime(arg2,pattern.get("usersettings","ruledatetimepattern"))
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatepattern")).date()
                     return self.keyInfo[arg1] > arg2
                 elif arg1 == "time":
-                    arg2 = datetime.time.strptime(arg2,pattern.get("usersettings","ruletimepattern"))  
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruletimepattern")).time()
                     return self.keyInfo[arg1] > arg2                                                 
                 else:
                     return self.keyInfo[arg1] > arg2                           
@@ -82,10 +94,10 @@ class LogVerifier():
                     arg1 = datetime.datetime.strptime(arg1,pattern.get("usersettings","ruledatetimepattern"))
                     return arg1 > self.keyInfo[arg2]
                 elif arg1 == "date":
-                    arg2 = datetime.date.strptime(arg2,pattern.get("usersettings","ruledatetimepattern"))
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatepattern")).date()
                     return arg1 > self.keyInfo[arg2]
                 elif arg1 == "time":
-                    arg2 = datetime.time.strptime(arg2,pattern.get("usersettings","ruletimepattern"))  
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruletimepattern")).time()
                     return arg1 > self.keyInfo[arg2] 
                 else:
                     return arg1 > self.keyInfo[arg2]                           
@@ -100,10 +112,10 @@ class LogVerifier():
                     arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatetimepattern"))  
                     return self.keyInfo[arg1] < arg2                    
                 elif arg1 == "date":
-                    arg2 = datetime.date.strptime(arg2,pattern.get("usersettings","ruledatetimepattern"))
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatepattern")).date()
                     return self.keyInfo[arg1] < arg2
                 elif arg1 == "time":
-                    arg2 = datetime.time.strptime(arg2,pattern.get("usersettings","ruletimepattern"))  
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruletimepattern")).time()  
                     return self.keyInfo[arg1] < arg2                                                 
                 else:
                     return self.keyInfo[arg1] < arg2                           
@@ -112,10 +124,10 @@ class LogVerifier():
                     arg1 = datetime.datetime.strptime(arg1,pattern.get("usersettings","ruledatetimepattern"))
                     return arg1 < self.keyInfo[arg2]
                 elif arg1 == "date":
-                    arg2 = datetime.date.strptime(arg2,pattern.get("usersettings","ruledatetimepattern"))
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatepattern")).date()
                     return arg1 < self.keyInfo[arg2]
                 elif arg1 == "time":
-                    arg2 = datetime.time.strptime(arg2,pattern.get("usersettings","ruletimepattern"))  
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruletimepattern")).time()  
                     return arg1 < self.keyInfo[arg2] 
                 else:
                     return arg1 < self.keyInfo[arg2]                           
@@ -130,10 +142,10 @@ class LogVerifier():
                     arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatetimepattern"))  
                     return self.keyInfo[arg1] <= arg2                    
                 elif arg1 == "date":
-                    arg2 = datetime.date.strptime(arg2,pattern.get("usersettings","ruledatetimepattern"))
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatepattern")).date()
                     return self.keyInfo[arg1] <= arg2
                 elif arg1 == "time":
-                    arg2 = datetime.time.strptime(arg2,pattern.get("usersettings","ruletimepattern"))  
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruletimepattern")).time()  
                     return self.keyInfo[arg1] <= arg2                                                 
                 else:
                     return self.keyInfo[arg1] <= arg2                           
@@ -142,31 +154,43 @@ class LogVerifier():
                     arg1 = datetime.datetime.strptime(arg1,pattern.get("usersettings","ruledatetimepattern"))
                     return arg1 <= self.keyInfo[arg2]
                 elif arg1 == "date":
-                    arg2 = datetime.date.strptime(arg2,pattern.get("usersettings","ruledatetimepattern"))
+                    arg2 = datetime.date.strptime(arg2,pattern.get("usersettings","ruledatepattern")).date()
                     return arg1 <= self.keyInfo[arg2]
                 elif arg1 == "time":
-                    arg2 = datetime.time.strptime(arg2,pattern.get("usersettings","ruletimepattern"))  
+                    arg2 = datetime.time.strptime(arg2,pattern.get("usersettings","ruletimepattern")).time() 
                     return arg1 <= self.keyInfo[arg2] 
                 else:
                     return arg1 <= self.keyInfo[arg2]                           
             else: 
                 return arg1 <= arg2
-        
+            
         elif operator == '>=':
             if self.isKey(arg1):
                 if self.isKey(arg2):
                     return self.keyInfo[arg1] >= self.keyInfo[arg2] 
-                elif arg1=="datetime":
-                    arg2= datetime.datetime.strptime(arg2,pattern.get("usersettings","ruletimepattern"))
-                    return self.keyInfo[arg1] >= arg2                                                  
+                elif arg1 == "datetime":
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatetimepattern"))  
+                    return self.keyInfo[arg1] >= arg2                    
+                elif arg1 == "date":
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruledatepattern")).date()
+                    return self.keyInfo[arg1] >= arg2
+                elif arg1 == "time":
+                    arg2 = datetime.datetime.strptime(arg2,pattern.get("usersettings","ruletimepattern")).time()  
+                    return self.keyInfo[arg1] >= arg2                                                 
                 else:
-                    return self.keyInfo[arg1] >= arg2                            
+                    return self.keyInfo[arg1] >= arg2                           
             elif self.isKey(arg2):
                 if arg2 == "datetime":
-                    arg1 = datetime.datetime.strptime(arg1,pattern.get("usersettings","ruletimepattern"))
+                    arg1 = datetime.datetime.strptime(arg1,pattern.get("usersettings","ruledatetimepattern"))
                     return arg1 >= self.keyInfo[arg2]
+                elif arg1 == "date":
+                    arg2 = datetime.date.strptime(arg2,pattern.get("usersettings","ruledatepattern")).date()
+                    return arg1 >= self.keyInfo[arg2]
+                elif arg1 == "time":
+                    arg2 = datetime.time.strptime(arg2,pattern.get("usersettings","ruletimepattern")).time() 
+                    return arg1 >= self.keyInfo[arg2] 
                 else:
-                    return arg1 >= self.keyInfo[arg2]                          
+                    return arg1 >= self.keyInfo[arg2]                           
             else: 
                 return arg1 >= arg2
         
@@ -249,13 +273,13 @@ class LogVerifier():
         self.keyInfo = keyInfo
         return self.treeSolver(rtree)
             
-if __name__=="__main__":
+'''if __name__=="__main__":
     d = [[['LTP', '=', ['validBids', '*', 'validAsks']], '|', ['updateLevel', '=', '8']]]
     c = [[['LTP', '=', ['5','+','5']], '|', ['updateLevel', '=', '8']]]
     
     lv = LogVerifier(c)
-    lv.keyInfo["oldQuantity":"1"]
-    print lv.equationSolver_single(False ,'!')
+    lv.keyInfo["datetime"] = datetime.datetime
+    print lv.equationSolver_single(False ,'!')'''
      
         
         
